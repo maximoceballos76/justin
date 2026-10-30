@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Obras · Ejemplo Solar</title>
+    <meta name="description" content="Proyectos de energía solar en hogares, comercios, industria y campo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Rubik:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header class="site-header">
+      <div class="container header-bar">
+        <a class="logo" href="index.html"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></span><span>Ejemplo<b>Solar</b></span></a>
+        <nav class="main-nav" id="main-nav" aria-label="Principal">
+          <a href="index.html">Inicio</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="mantenimiento.html">Mantenimiento</a>
+          <a href="obras.html" aria-current="page">Obras</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <a class="btn-whatsapp" href="contacto.html" data-whatsapp aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg>261 555-0142</a>
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </header>
+    <main>
+      <!-- Portada -->
+      <section class="page-hero">
+        <img class="cover-image" src="imagenes-free/26-techo-empresa-2000x900.jpg" alt="">
+        <div class="container">
+          <span class="eyebrow">Obras y empresa</span>
+          <h1>Proyectos que ya están generando</h1>
+          <p>Casas, comercios y fincas de toda Mendoza.</p>
+        </div>
+      </section>
+      <!-- Obras con filtros -->
+      <section class="section">
+        <div class="container">
+          <div class="filters" role="group" aria-label="Filtrar obras">
+            <button class="filter" type="button" data-filter="todas" aria-pressed="true">Todas</button>
+            <button class="filter" type="button" data-filter="hogares" aria-pressed="false">Hogares</button>
+            <button class="filter" type="button" data-filter="comercios" aria-pressed="false">Comercios</button>
+            <button class="filter" type="button" data-filter="industria" aria-pressed="false">Industria</button>
+            <button class="filter" type="button" data-filter="campo" aria-pressed="false">Campo</button>
+          </div>
+          <div class="projects">
+            <figure class="project project--wide" data-category="campo">
+              <img src="imagenes-free/24-parque-rural-2000x900.jpg" alt="Parque solar rural" loading="lazy">
+              <figcaption><b>Parque solar rural</b><span>San Rafael · 15 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="hogares">
+              <img src="imagenes-free/07-casa-arboles-1000x1000.jpg" alt="Residencia con jardín" loading="lazy">
+              <figcaption><b>Residencia con jardín</b><span>Chacras de Coria · 6 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="comercios">
+              <img src="imagenes-free/10-instalacion-azotea-1920x864.jpg" alt="Azotea de oficinas" loading="lazy">
+              <figcaption><b>Azotea de oficinas</b><span>Godoy Cruz · 12 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="campo">
+              <img src="imagenes-free/22-parque-anochecer-1920x1387.jpg" alt="Establecimiento agropecuario" loading="lazy">
+              <figcaption><b>Establecimiento agropecuario</b><span>Tupungato · 18 kWp</span></figcaption>
+            </figure>
+            <figure class="project project--tall" data-category="campo">
+              <img src="imagenes-free/23-parque-aereo-1080x1440.jpg" alt="Bodega familiar" loading="lazy">
+              <figcaption><b>Bodega familiar</b><span>Maipú · 20 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="hogares">
+              <img src="imagenes-free/03-casa-tejas-1000x800.jpg" alt="Casa familiar" loading="lazy">
+              <figcaption><b>Casa familiar</b><span>Guaymallén · 4 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="industria">
+              <img src="imagenes-free/38-atardecer-parque-1920x1080.jpg" alt="Planta sobre lomadas" loading="lazy">
+              <figcaption><b>Planta sobre lomadas</b><span>Luján de Cuyo · 30 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="comercios">
+              <img src="imagenes-free/33-reflejo-panel-1000x800.jpg" alt="Reacondicionamiento" loading="lazy">
+              <figcaption><b>Reacondicionamiento</b><span>Capital · 8 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="comercios">
+              <img src="imagenes-free/39-atardecer-sierras-1920x1387.jpg" alt="Hostería de montaña" loading="lazy">
+              <figcaption><b>Hostería de montaña</b><span>Potrerillos · 7 kWp</span></figcaption>
+            </figure>
+            <figure class="project" data-category="industria">
+              <img src="imagenes-free/30-textura-oscura-1919x863.jpg" alt="Módulos de alta eficiencia" loading="lazy">
+              <figcaption><b>Módulos de alta eficiencia</b><span>Las Heras · 25 kWp</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <!-- Nosotros -->
+      <section class="section--dark">
+        <div class="container split">
+          <img class="photo" src="imagenes-free/11-tecnico-casco-800x600.jpg" alt="Técnico trabajando en un techo" loading="lazy">
+          <div>
+            <span class="eyebrow">Nosotros</span>
+            <h2>Dos personas, de la ingeniería a la posventa</h2>
+            <p>Empezamos en 2024 en Mendoza con una idea simple: que cada cliente entienda lo que compra y sepa a quién llamar después. Somos dos, así que quienes proyectan tu sistema son los mismos que lo instalan y lo mantienen. Ahora estamos pensando en llegar a otras provincias.</p>
+            <div class="values">
+              <div>
+                <b>2 años</b><span>de trayectoria en energía solar</span>
+              </div>
+              <div>
+                <b>2 personas</b><span>a cargo de cada obra, de punta a punta</span>
+              </div>
+              <div>
+                <b>Mendoza</b><span>nuestra base, con ganas de crecer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Llamado a la acción -->
+      <section class="cta">
+        <img class="cover-image" src="imagenes-free/37-atardecer-techo-1613x725.jpg" alt="" loading="lazy">
+        <div class="container">
+          <div>
+            <h2>¿Cuánto podría generar tu techo?</h2>
+            <p>Mandanos una foto de tu factura y te devolvemos una estimación sin cargo en 48 horas.</p>
+          </div>
+          <a class="btn" href="contacto.html">Pedí tu presupuesto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+      </section>
+    </main>
+    <!-- Pie de página -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="logo logo--light" href="index.html"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></span><span>Ejemplo<b>Solar</b></span></a>
+          <p>Energía solar para hogares, comercios, industria y campo. Instalación, trámites y mantenimiento.</p>
+        </div>
+        <div>
+          <h4>Servicios</h4>
+          <p>Instalación llave en mano<br>Baterías y respaldo<br>Mantenimiento<br>Monitoreo</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p>261 555-0142<br>hola@ejemplosolar.example<br>Lun a vie, 9 a 18 h</p>
+        </div>
+        <div>
+          <h4>Cobertura</h4>
+          <p>Toda la provincia de Mendoza.<br>Consultanos por otras provincias.</p>
+        </div>
+      </div>
+      <div class="container footer-legal">
+        Prototipo de diseño. Marca, cifras, precios, clientes y datos de contacto son ficticios. <a href="creditos.html">Créditos de imágenes</a>
+      </div>
+    </footer>
+    <a class="whatsapp-float" href="contacto.html" data-whatsapp aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg></a>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-/* Ejemplo Solar - comportamiento del sitio.
+/* Zenit Ing - comportamiento del sitio.
    Cada función se ocupa de una parte y no hace nada si esa parte
    no existe en la página actual. */
 

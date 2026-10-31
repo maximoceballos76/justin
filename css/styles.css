@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ejemplo Solar - hoja de estilos
+   Zenit Ing - hoja de estilos
 
    1. Variables y base
    2. Componentes generales (botones, listas, títulos)
@@ -18,15 +18,16 @@
    ========================================================================== */
 
 :root {
-  --navy: #09202e;
-  --navy-light: #123a50;
-  --sun: #f6a821;
-  --sun-light: #ffc75a;
-  --sun-dark: #a56800;
-  --ink: #17252e;
-  --muted: #566772;
-  --sand: #f5f2ec;
-  --line: #e2dfd8;
+  --green-deep: #04331a;
+  --green-dark: #0b5a2a;
+  --sun: #f8a51b;
+  --sun-light: #ffc933;
+  --green: #1f7a24;
+  --blue: #0a5a94;
+  --ink: #16291d;
+  --muted: #55665b;
+  --sand: #f2f6ee;
+  --line: #dde5d8;
   --white: #fff;
   --error: #b3261e;
   --whatsapp: #1e9e5a;
@@ -118,12 +119,12 @@ svg {
 
 .section--dark {
   padding: 92px 0;
-  background: var(--navy);
+  background: var(--green-deep);
   color: var(--white);
 }
 
 .section--dark p {
-  color: #d4dfe5;
+  color: #dcebdf;
 }
 
 .section--center {
@@ -155,7 +156,7 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #8a5700;
+  color: var(--blue);
   font: 500 17px var(--font-title);
 }
 
@@ -174,7 +175,7 @@ svg {
 }
 
 .eyebrow--dark {
-  color: var(--sun-dark);
+  color: var(--green);
 }
 
 .btn {
@@ -185,7 +186,7 @@ svg {
   border: 0;
   border-radius: var(--radius);
   background: var(--sun);
-  color: var(--navy);
+  color: var(--green-deep);
   font: 600 17px var(--font-title);
   cursor: pointer;
   transition: background 0.15s;
@@ -207,7 +208,7 @@ svg {
 
 .btn--outline {
   background: transparent;
-  box-shadow: inset 0 0 0 2px var(--navy);
+  box-shadow: inset 0 0 0 2px var(--green-deep);
 }
 
 .button-row {
@@ -253,7 +254,7 @@ svg {
 
 .checklist svg {
   margin-top: 3px;
-  color: #d48a00;
+  color: #e8920c;
   font-size: 22px;
   stroke-width: 2.4;
 }
@@ -303,7 +304,7 @@ svg {
   justify-content: space-between;
   gap: 12px;
   padding: 44px 18px 15px;
-  background: linear-gradient(transparent, rgba(9, 32, 46, 0.86));
+  background: linear-gradient(transparent, rgba(4, 51, 26, 0.86));
   color: var(--white);
   font-size: 15px;
 }
@@ -336,36 +337,20 @@ svg {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--navy);
-  font: 600 25px var(--font-title);
+  flex: none;
 }
 
-.logo b {
-  margin-left: 5px;
-  color: #c97f00;
-  font-weight: 600;
+.logo img {
+  width: auto;
+  height: 60px;
 }
 
+/* El logo tiene letras oscuras: sobre fondo oscuro va en una placa blanca */
 .logo--light {
-  color: var(--white);
-}
-
-.logo--light b {
-  color: var(--sun-light);
-}
-
-.logo-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--sun);
-  color: var(--navy);
-  font-size: 26px;
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--white);
 }
 
 .main-nav {
@@ -411,7 +396,7 @@ svg {
   border: 0;
   border-radius: var(--radius);
   background: transparent;
-  color: var(--navy);
+  color: var(--green-deep);
   font-size: 30px;
   cursor: pointer;
 }
@@ -427,7 +412,7 @@ svg {
   height: 58px;
   border-radius: 50%;
   background: var(--whatsapp);
-  box-shadow: 0 6px 18px rgba(9, 32, 46, 0.3);
+  box-shadow: 0 6px 18px rgba(4, 51, 26, 0.3);
   color: var(--white);
   font-size: 32px;
 }
@@ -452,7 +437,7 @@ svg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(9, 32, 46, 0.92) 0%, rgba(9, 32, 46, 0.64) 45%, rgba(9, 32, 46, 0.1) 100%);
+  background: linear-gradient(90deg, rgba(4, 51, 26, 0.92) 0%, rgba(4, 51, 26, 0.64) 45%, rgba(4, 51, 26, 0.1) 100%);
 }
 
 .cover-image {
@@ -500,7 +485,7 @@ svg {
 
 .stats {
   padding: 36px 0;
-  background: var(--navy);
+  background: var(--green-deep);
   color: var(--white);
 }
 
@@ -517,7 +502,7 @@ svg {
 }
 
 .stats-grid span {
-  color: #c9d6dd;
+  color: #cfe3d3;
   font-size: 16px;
 }
 
@@ -532,7 +517,7 @@ svg {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  color: var(--navy-light);
+  color: var(--green-dark);
   font: 500 16px var(--font-title);
 }
 
@@ -542,14 +527,14 @@ svg {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 6px;
-  background: var(--navy);
+  background: var(--green-deep);
   color: var(--sun-light);
   font-size: 52px;
   transition: background 0.15s;
 }
 
 .tile:hover span {
-  background: var(--navy-light);
+  background: var(--green-dark);
 }
 
 .steps {
@@ -576,7 +561,7 @@ svg {
   height: 42px;
   border-radius: 50%;
   background: var(--sun);
-  color: var(--navy);
+  color: var(--green-deep);
   font: 600 19px var(--font-title);
 }
 
@@ -653,7 +638,7 @@ svg {
   height: 58px;
   margin-bottom: 18px;
   border-radius: 6px;
-  background: var(--navy);
+  background: var(--green-deep);
   color: var(--sun-light);
   font-size: 33px;
 }
@@ -698,17 +683,6 @@ svg {
 
 .plan .btn {
   justify-content: center;
-}
-
-.plan-badge {
-  position: absolute;
-  top: -14px;
-  left: 30px;
-  padding: 4px 12px;
-  border-radius: 99px;
-  background: var(--sun);
-  color: var(--navy);
-  font: 600 13px var(--font-title);
 }
 
 .plan-price {
@@ -759,7 +733,7 @@ svg {
 }
 
 .filter[aria-pressed="true"] {
-  background: var(--navy);
+  background: var(--green-deep);
   color: var(--white);
 }
 
@@ -795,7 +769,7 @@ svg {
 
 .values span {
   display: block;
-  color: #c9d6dd;
+  color: #cfe3d3;
   font-size: 15px;
   line-height: 1.4;
 }
@@ -833,7 +807,7 @@ svg {
 .field textarea {
   width: 100%;
   padding: 13px 14px;
-  border: 1px solid #c9c5bc;
+  border: 1px solid #c3cdbf;
   border-radius: 6px;
   background: var(--white);
   font: 400 16px var(--font-body);
@@ -850,7 +824,7 @@ svg {
 
 .form-status {
   margin: 0;
-  color: #17744a;
+  color: var(--green);
   font-weight: 600;
 }
 
@@ -874,7 +848,7 @@ svg {
 }
 
 .contact-list svg {
-  color: var(--sun-dark);
+  color: var(--green);
   font-size: 26px;
 }
 
@@ -908,8 +882,8 @@ svg {
 
 .site-footer {
   padding: 60px 0 26px;
-  background: var(--navy);
-  color: #c9d6dd;
+  background: var(--green-deep);
+  color: #cfe3d3;
   font-size: 15px;
 }
 
@@ -931,8 +905,8 @@ svg {
 .footer-legal {
   margin-top: 38px;
   padding-top: 18px;
-  border-top: 1px solid #2b4a5c;
-  color: #9fb2bd;
+  border-top: 1px solid #1f5a36;
+  color: #a9c7b1;
   font-size: 14px;
 }
 
@@ -997,7 +971,7 @@ svg {
     padding: 8px 24px 16px;
     background: var(--white);
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 10px 20px rgba(9, 32, 46, 0.12);
+    box-shadow: 0 10px 20px rgba(4, 51, 26, 0.12);
   }
 
   .main-nav.is-open {
@@ -1011,7 +985,7 @@ svg {
 
   .main-nav a[aria-current="page"] {
     border-color: var(--line);
-    color: var(--sun-dark);
+    color: var(--green);
   }
 
   .tiles {
@@ -1065,14 +1039,8 @@ svg {
     gap: 8px;
   }
 
-  .logo {
-    font-size: 20px;
-  }
-
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    font-size: 21px;
+  .logo img {
+    height: 46px;
   }
 
   /* En celular el número no entra: queda solo el ícono */
@@ -1085,7 +1053,7 @@ svg {
   .hero::before,
   .page-hero::before,
   .cta::before {
-    background: rgba(9, 32, 46, 0.68);
+    background: rgba(4, 51, 26, 0.68);
   }
 
   .hero {

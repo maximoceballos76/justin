@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contacto · Zenit Ing</title>
-    <meta name="description" content="Pedí tu presupuesto de energía solar.">
+    <meta name="description" content="Consultas y cotización de proyectos de energía solar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Rubik:wght@500;600;700&display=swap">
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -12,7 +12,6 @@
     <script src="js/main.js" defer></script>
   </head>
   <body>
-    <!-- Encabezado -->
     <header class="site-header">
       <div class="container header-bar">
         <a class="logo" href="index.html"><img src="img/logo-zenit-ing.png" alt="Zenit Ing" width="156" height="60"></a>
@@ -23,34 +22,35 @@
           <a href="obras.html">Obras</a>
           <a href="contacto.html" aria-current="page">Contacto</a>
         </nav>
-        <a class="btn-whatsapp" href="contacto.html" data-whatsapp aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg>261 555-0142</a>
+        <div class="header-contacts">
+          <a class="btn-whatsapp" href="contacto.html" data-whatsapp aria-label="WhatsApp de Justin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg>Justin 261 718-0242</a>
+          <a class="btn-whatsapp" href="contacto.html" data-whatsapp="5492613876608" aria-label="WhatsApp de Alexis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg>Alexis 261 387-6608</a>
+        </div>
         <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </header>
     <main>
-      <!-- Portada -->
       <section class="page-hero">
-        <img class="cover-image" src="imagenes-free/39-atardecer-sierras-1920x1387.jpg" alt="">
+        <img class="cover-image" src="img/ilustrativas/02-atardecer-sierras.jpg" alt=""><small class="img-note">Imagen ilustrativa</small>
         <div class="container">
           <span class="eyebrow">Contacto</span>
-          <h1>Hablemos de tu proyecto</h1>
-          <p>Contanos qué necesitás y te respondemos en el día.</p>
+          <h1>Consultas y presupuestos</h1>
+          <p>Cada consulta se responde en el día, con cotización y visita técnica.</p>
         </div>
       </section>
-      <!-- Formulario y datos -->
       <section class="section">
         <div class="container split split--start">
           <form class="contact-form" novalidate>
-            <h2>Pedí tu presupuesto</h2>
+            <h2>Cotizar proyecto</h2>
             <div class="form-grid">
               <label class="field">
                 Nombre
-                <input name="nombre" autocomplete="name" placeholder="Tu nombre" required>
+                <input name="nombre" autocomplete="name" required>
                 <span class="field-error" hidden></span>
               </label>
               <label class="field">
-                WhatsApp
-                <input name="whatsapp" type="tel" autocomplete="tel" placeholder="11 ..." required>
+                Teléfono o WhatsApp
+                <input name="telefono" type="tel" autocomplete="tel" placeholder="261 ..." required>
                 <span class="field-error" hidden></span>
               </label>
               <label class="field">
@@ -59,66 +59,68 @@
                 <span class="field-error" hidden></span>
               </label>
               <label class="field">
-                Gasto mensual de luz
-                <input name="gasto" inputmode="numeric" placeholder="$">
+                NIC de EDEMSA (opcional)
+                <input name="nic" inputmode="numeric" aria-describedby="nic-ayuda">
                 <span class="field-error" hidden></span>
               </label>
             </div>
+            <p class="field-help" id="nic-ayuda">El NIC identifica el suministro y permite ver los consumos en la <a href="https://oficinavirtual.edemsa.com/iniciar-sesion/nic" target="_blank" rel="noopener">Oficina Virtual de EDEMSA</a>.</p>
             <label class="field">
-              ¿Dónde querés instalar?
-              <select name="tipo">
-                <option>Casa</option>
-                <option>Comercio</option>
-                <option>Industria</option>
-                <option>Campo</option>
-                <option>Mantenimiento de un sistema existente</option>
-              </select>
-              <span class="field-error" hidden></span>
-            </label>
+                Tipo de trabajo
+                <select name="tipo">
+                  <option>Casa</option>
+                  <option>Comercio</option>
+                  <option>Industria</option>
+                  <option>Campo</option>
+                  <option>Mantenimiento de un sistema existente</option>
+                  <option>Relevamiento técnico</option>
+                  <option>Ingeniería o planos</option>
+                </select>
+                <span class="field-error" hidden></span>
+              </label>
             <label class="field">
-              Mensaje
-              <textarea name="mensaje" rows="4" placeholder="Contanos sobre tu proyecto"></textarea>
-              <span class="field-error" hidden></span>
-            </label>
-            <button class="btn" type="submit">Enviar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
+                Detalle del proyecto
+                <textarea name="mensaje" rows="4"></textarea>
+                <span class="field-error" hidden></span>
+              </label>
+            <button class="btn" type="submit">Enviar consulta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
             <p class="form-status" role="status" hidden></p>
           </form>
           <aside class="contact-aside">
-            <img class="photo" src="imagenes-free/36-modulo-estudio-1000x1000.jpg" alt="Módulo solar" loading="lazy">
+            <span class="media photo"><img src="img/obras/03-techo-tejas.jpg" alt="Paneles solares sobre un techo de tejas" loading="lazy"></span>
             <ul class="contact-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg><span><b>WhatsApp</b>261 555-0142</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg><span><b>WhatsApp y llamadas</b><a href="contacto.html" data-whatsapp>Justin 261 718-0242</a><br><a href="contacto.html" data-whatsapp="5492613876608">Alexis 261 387-6608</a></span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h6"/></svg><span><b>Email</b>hola@zeniting.com.ar</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg><span><b>Oficina</b>Av. Ficticia 1234, Mendoza</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span><b>Horario</b>Lunes a viernes, 9 a 18 h</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg><span><b>Zona de trabajo</b>Toda Mendoza, zonas rurales, alta montaña y provincias cercanas. Las zonas lejanas o de difícil acceso tienen un costo extra proporcional.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span><b>Atención</b>Todos los días, con respuesta en el día</span></li>
             </ul>
           </aside>
         </div>
       </section>
     </main>
-    <!-- Pie de página -->
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
           <a class="logo logo--light" href="index.html"><img src="img/logo-zenit-ing.png" alt="Zenit Ing" width="156" height="60"></a>
-          <p>Energía solar para hogares, comercios, industria y campo. Instalación, trámites y mantenimiento.</p>
+          <p>Energía solar para hogares, comercios, industria y campo. Ingeniería, instalación, trámites y mantenimiento.</p>
         </div>
         <div>
           <h4>Servicios</h4>
-          <p>Instalación llave en mano<br>Baterías y respaldo<br>Mantenimiento<br>Monitoreo</p>
+          <p>Instalación llave en mano<br>Ingeniería y planos<br>Baterías y respaldo<br>Mantenimiento y monitoreo</p>
         </div>
         <div>
           <h4>Contacto</h4>
-          <p>261 555-0142<br>hola@zeniting.com.ar<br>Lun a vie, 9 a 18 h</p>
+          <p>Justin 261 718-0242<br>Alexis 261 387-6608<br>hola@zeniting.com.ar<br>Respuesta en el día</p>
         </div>
         <div>
           <h4>Cobertura</h4>
-          <p>Toda la provincia de Mendoza.<br>Consultanos por otras provincias.</p>
+          <p>Toda Mendoza, zonas rurales y alta montaña.<br>San Juan, San Luis, Córdoba, Neuquén y otras provincias según el proyecto.</p>
         </div>
       </div>
       <div class="container footer-legal">
-        Prototipo de diseño. Cifras, precios, obras, testimonios y teléfono son de ejemplo. <a href="creditos.html">Créditos de imágenes</a>
+        © 2026 Zenit Ing. Todos los derechos reservados. Las imágenes marcadas son ilustrativas. <a href="creditos.html">Créditos de imágenes</a>
       </div>
     </footer>
-    <a class="whatsapp-float" href="contacto.html" data-whatsapp aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg></a>
+    <a class="whatsapp-float" href="contacto.html" data-whatsapp aria-label="Consultar por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path d="M9 9c0 3.5 2.5 6 6 6l1-1.8-2.2-1-.9.8c-1-.4-1.6-1-2-2l.8-.9-1-2.2z"/></svg></a>
   </body>
 </html>

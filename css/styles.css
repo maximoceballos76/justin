@@ -318,6 +318,38 @@ svg {
   white-space: nowrap;
 }
 
+/* Foto con aviso: .media envuelve la imagen para poder apoyar las notas encima */
+.media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.media.photo {
+  border-radius: var(--radius);
+}
+
+.card .media {
+  height: 200px;
+}
+
+/* Aviso "Imagen ilustrativa": chico y discreto a propósito */
+.img-note {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.78);
+  font: 400 9px/1.2 var(--font-body);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.project .img-note {
+  top: 5px;
+  bottom: auto;
+}
+
 /* 3. Encabezado y navegación
    ========================================================================== */
 
@@ -325,8 +357,7 @@ svg {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
+  background: var(--green-deep);
 }
 
 .header-bar {
@@ -342,7 +373,14 @@ svg {
 
 .logo img {
   width: auto;
-  height: 60px;
+  height: 52px;
+}
+
+/* El encabezado es verde y el logo tiene fondo blanco: va sobre una placa */
+.site-header .logo {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--white);
 }
 
 /* El logo tiene letras oscuras: sobre fondo oscuro va en una placa blanca */
@@ -357,6 +395,7 @@ svg {
   display: flex;
   gap: 30px;
   margin-left: auto;
+  color: var(--white);
   font: 500 16px var(--font-title);
 }
 
@@ -382,6 +421,11 @@ svg {
   white-space: nowrap;
 }
 
+.header-contacts {
+  display: flex;
+  gap: 8px;
+}
+
 .btn-whatsapp svg {
   font-size: 21px;
 }
@@ -396,7 +440,7 @@ svg {
   border: 0;
   border-radius: var(--radius);
   background: transparent;
-  color: var(--green-deep);
+  color: var(--white);
   font-size: 30px;
   cursor: pointer;
 }
@@ -437,7 +481,7 @@ svg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(4, 51, 26, 0.92) 0%, rgba(4, 51, 26, 0.64) 45%, rgba(4, 51, 26, 0.1) 100%);
+  background: linear-gradient(90deg, rgba(4, 51, 26, 0.96) 0%, rgba(4, 51, 26, 0.8) 50%, rgba(11, 90, 42, 0.32) 100%);
 }
 
 .cover-image {
@@ -574,40 +618,6 @@ svg {
   color: var(--muted);
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.gallery .project {
-  height: 280px;
-}
-
-.testimonials {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.testimonial {
-  margin: 0;
-  padding: 28px;
-  border-top: 4px solid var(--sun);
-  border-radius: var(--radius);
-  background: var(--white);
-}
-
-.testimonial footer b {
-  display: block;
-  font: 600 17px var(--font-title);
-}
-
-.testimonial footer span {
-  color: var(--muted);
-  font-size: 15px;
-}
-
 /* 6. Servicios
    ========================================================================== */
 
@@ -623,7 +633,7 @@ svg {
   align-items: center;
 }
 
-.service--reverse img {
+.service--reverse .media {
   order: 2;
 }
 
@@ -645,56 +655,6 @@ svg {
 
 /* 7. Mantenimiento
    ========================================================================== */
-
-.plans {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: stretch;
-}
-
-.plan {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 34px 30px;
-  border-radius: var(--radius);
-  background: var(--white);
-  box-shadow: 0 0 0 1px var(--line);
-}
-
-.plan--featured {
-  box-shadow: 0 0 0 3px var(--sun);
-}
-
-.plan h3 {
-  margin: 0;
-  font-size: 26px;
-}
-
-.plan small {
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.plan .checklist {
-  flex: 1;
-}
-
-.plan .btn {
-  justify-content: center;
-}
-
-.plan-price {
-  margin: 18px 0 20px;
-  font: 600 36px var(--font-title);
-}
-
-.plan-price span {
-  display: block;
-  color: var(--muted);
-  font: 400 15px var(--font-body);
-}
 
 .faq details {
   padding: 16px 0;
@@ -820,6 +780,17 @@ svg {
 .field-error {
   color: var(--error);
   font: 400 14px var(--font-body);
+}
+
+.field-help {
+  margin: -8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.field-help a {
+  color: var(--blue);
+  text-decoration: underline;
 }
 
 .form-status {
@@ -949,13 +920,46 @@ svg {
 /* 11. Responsive
    ========================================================================== */
 
+/* Pantallas medianas: los dos teléfonos necesitan más lugar en el encabezado */
+@media (max-width: 1320px) {
+  .header-bar {
+    gap: 16px;
+  }
+
+  .main-nav {
+    gap: 16px;
+    font-size: 15px;
+  }
+
+  .btn-whatsapp {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .header-bar,
+  .main-nav {
+    gap: 12px;
+  }
+
+  .main-nav {
+    font-size: 14px;
+  }
+
+  .btn-whatsapp {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+
 /* Tablet: el menú pasa a desplegable */
 @media (max-width: 1000px) {
   .nav-toggle {
     display: grid;
   }
 
-  .btn-whatsapp {
+  .header-contacts {
     margin-left: auto;
   }
 
@@ -969,9 +973,8 @@ svg {
     gap: 0;
     margin: 0;
     padding: 8px 24px 16px;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 10px 20px rgba(4, 51, 26, 0.12);
+    background: var(--green-deep);
+    box-shadow: 0 10px 20px rgba(4, 51, 26, 0.3);
   }
 
   .main-nav.is-open {
@@ -980,12 +983,12 @@ svg {
 
   .main-nav a {
     padding: 12px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid #1f5a36;
   }
 
   .main-nav a[aria-current="page"] {
-    border-color: var(--line);
-    color: var(--green);
+    border-color: #1f5a36;
+    color: var(--sun-light);
   }
 
   .tiles {
@@ -993,10 +996,7 @@ svg {
   }
 
   .cards,
-  .gallery,
   .projects,
-  .testimonials,
-  .plans,
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1007,8 +1007,21 @@ svg {
     gap: 34px;
   }
 
-  .service--reverse img {
+  .service--reverse .media {
     order: 0;
+  }
+}
+
+/* Tablet angosta: los teléfonos se achican para entrar junto al logo */
+@media (max-width: 720px) {
+  .header-contacts {
+    gap: 4px;
+  }
+
+  .btn-whatsapp {
+    gap: 4px;
+    padding: 6px 7px;
+    font-size: 12px;
   }
 }
 
@@ -1040,13 +1053,17 @@ svg {
   }
 
   .logo img {
-    height: 46px;
+    height: 40px;
   }
 
   /* En celular el número no entra: queda solo el ícono */
   .btn-whatsapp {
     padding: 9px;
     font-size: 0;
+  }
+
+  .btn-whatsapp + .btn-whatsapp {
+    display: none;
   }
 
   /* El texto ocupa todo el ancho, así que el fondo se oscurece parejo */
@@ -1100,10 +1117,7 @@ svg {
   }
 
   .cards,
-  .gallery,
   .projects,
-  .testimonials,
-  .plans,
   .form-grid,
   .values,
   .footer-grid {

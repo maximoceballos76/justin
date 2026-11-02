@@ -2,18 +2,25 @@
    Cada función se ocupa de una parte y no hace nada si esa parte
    no existe en la página actual. */
 
-// Número real en formato internacional, sin "+" ni espacios (hoy es ficticio).
-const WHATSAPP_NUMBER = "5492615550142";
+// Número en formato internacional, sin "+" ni espacios.
+const WHATSAPP_NUMBER = "5492617180242";
 
-function whatsappUrl(message) {
-  const base = `https://wa.me/${WHATSAPP_NUMBER}`;
+// Casilla que recibe las consultas.
+const CONTACT_EMAIL = "hola@zeniting.com.ar";
+
+// URL del servicio que envía el formulario por correo. Mientras esté vacía,
+// el formulario abre el programa de correo con la consulta ya escrita.
+const FORM_ENDPOINT = "";
+
+function whatsappUrl(message, number) {
+  const base = `https://wa.me/${number || WHATSAPP_NUMBER}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-/* Todos los enlaces con data-whatsapp usan el número de arriba. */
+/* Los enlaces con data-whatsapp usan el número de arriba, salvo que indiquen otro. */
 function initWhatsappLinks() {
   document.querySelectorAll("[data-whatsapp]").forEach((link) => {
-    link.href = whatsappUrl("Hola, quiero hacer una consulta sobre energía solar.");
+    link.href = whatsappUrl("Hola, quisiera hacer una consulta sobre energía solar.", link.dataset.whatsapp);
     link.target = "_blank";
     link.rel = "noopener";
   });
@@ -70,7 +77,7 @@ function validateField(field) {
   const value = field.value.trim();
 
   if (field.required && !value) return "Completá este campo.";
-  if (field.name === "whatsapp" && value && value.replace(/\D/g, "").length < 8) {
+  if (field.name === "telefono" && value && value.replace(/\D/g, "").length < 8) {
     return "Ingresá un número con código de área.";
   }
   return "";
@@ -79,19 +86,37 @@ function validateField(field) {
 function buildContactMessage(form) {
   const data = new FormData(form);
   const lines = [
-    "Hola, quiero pedir un presupuesto.",
+    "Consulta desde el sitio.",
     `Nombre: ${data.get("nombre").trim()}`,
-    `WhatsApp: ${data.get("whatsapp").trim()}`,
+    `Teléfono: ${data.get("telefono").trim()}`,
     `Localidad: ${data.get("localidad").trim()}`,
-    `Instalación: ${data.get("tipo")}`,
+    `Tipo de trabajo: ${data.get("tipo")}`,
   ];
 
-  if (data.get("gasto").trim()) lines.push(`Gasto mensual de luz: $ ${data.get("gasto").trim()}`);
-  if (data.get("mensaje").trim()) lines.push(`Mensaje: ${data.get("mensaje").trim()}`);
+  if (data.get("nic").trim()) lines.push(`NIC de EDEMSA: ${data.get("nic").trim()}`);
+  if (data.get("mensaje").trim()) lines.push(`Detalle: ${data.get("mensaje").trim()}`);
   return lines.join("\n");
 }
 
-/* El sitio no tiene servidor: la consulta se envía armando un mensaje de WhatsApp. */
+/* Envía la consulta. Devuelve el texto que se le muestra a la persona. */
+async function sendContactMessage(form) {
+  const message = buildContactMessage(form);
+
+  if (!FORM_ENDPOINT) {
+    const subject = encodeURIComponent("Consulta desde el sitio");
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(message)}`;
+    return "Se abrió el correo con la consulta. Solo falta enviarla.";
+  }
+
+  const response = await fetch(FORM_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ subject: "Consulta desde el sitio", message }),
+  });
+  if (!response.ok) throw new Error(`Error ${response.status}`);
+  return "Consulta enviada. La respuesta llega en el día.";
+}
+
 function initContactForm() {
   const form = document.querySelector(".contact-form");
   if (!form) return;
@@ -99,17 +124,13 @@ function initContactForm() {
   const fields = form.querySelectorAll("input, select, textarea");
   const status = form.querySelector(".form-status");
 
-  // Si viene desde un plan de mantenimiento (contacto.html?plan=Plus), lo deja escrito.
-  const plan = new URLSearchParams(window.location.search).get("plan");
-  if (plan) form.elements.mensaje.value = `Quiero consultar por el plan ${plan} de mantenimiento.`;
-
   fields.forEach((field) => {
     field.addEventListener("input", () => {
       if (field.getAttribute("aria-invalid") === "true") setFieldError(field, validateField(field));
     });
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     status.hidden = true;
 
@@ -125,8 +146,11 @@ function initContactForm() {
       return;
     }
 
-    window.open(whatsappUrl(buildContactMessage(form)), "_blank", "noopener");
-    status.textContent = "Abrimos WhatsApp con tu consulta. Solo falta tocar enviar.";
+    try {
+      status.textContent = await sendContactMessage(form);
+    } catch {
+      status.textContent = "No se pudo enviar. Probar por WhatsApp al 261 718-0242.";
+    }
     status.hidden = false;
   });
 }

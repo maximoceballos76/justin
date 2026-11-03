@@ -815,6 +815,17 @@ svg {
   font-weight: 600;
 }
 
+.form-privacy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.form-privacy a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
 .contact-aside {
   display: grid;
   gap: 26px;
@@ -900,6 +911,25 @@ svg {
 .footer-legal a {
   color: inherit;
   text-decoration: underline;
+}
+
+.legal-text {
+  max-width: 760px;
+}
+
+.legal-text h2 {
+  margin: 1.6em 0 0.5em;
+  font-size: 22px;
+}
+
+.legal-text a {
+  color: var(--blue);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.legal-date {
+  color: var(--muted);
 }
 
 .credits-note {

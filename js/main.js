@@ -6,7 +6,7 @@
 const WHATSAPP_NUMBER = "5492617180242";
 
 // Casilla que recibe las consultas.
-const CONTACT_EMAIL = "hola@zeniting.com.ar";
+const CONTACT_EMAIL = "equipotecnico@zeniting.com.ar";
 
 // URL del servicio que envía el formulario por correo. Mientras esté vacía,
 // el formulario abre el programa de correo con la consulta ya escrita.

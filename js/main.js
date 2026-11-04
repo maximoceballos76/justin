@@ -8,9 +8,9 @@ const WHATSAPP_NUMBER = "5492617180242";
 // Casilla que recibe las consultas.
 const CONTACT_EMAIL = "equipotecnico@zeniting.com.ar";
 
-// URL del servicio que envía el formulario por correo. Mientras esté vacía,
-// el formulario abre el programa de correo con la consulta ya escrita.
-const FORM_ENDPOINT = "";
+// Dirección del Worker zenit-formulario, que manda la consulta por correo.
+// Si se deja vacía, el formulario abre el programa de correo con la consulta ya escrita.
+const FORM_ENDPOINT = "/api/consulta";
 
 function whatsappUrl(message, number) {
   const base = `https://wa.me/${number || WHATSAPP_NUMBER}`;
@@ -76,9 +76,12 @@ function setFieldError(field, message) {
 function validateField(field) {
   const value = field.value.trim();
 
-  if (field.required && !value) return "Completá este campo.";
+  if (field.required && !value) return "Este campo es obligatorio.";
   if (field.name === "telefono" && value && value.replace(/\D/g, "").length < 8) {
-    return "Ingresá un número con código de área.";
+    return "Ingresar un número con código de área.";
+  }
+  if (field.name === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    return "Ingresar un correo válido, por ejemplo nombre@ejemplo.com.";
   }
   return "";
 }
@@ -89,6 +92,7 @@ function buildContactMessage(form) {
     "Consulta desde el sitio.",
     `Nombre: ${data.get("nombre").trim()}`,
     `Teléfono: ${data.get("telefono").trim()}`,
+    `Correo: ${data.get("email").trim() || "no indicado"}`,
     `Localidad: ${data.get("localidad").trim()}`,
     `Tipo de trabajo: ${data.get("tipo")}`,
   ];
@@ -111,9 +115,10 @@ async function sendContactMessage(form) {
   const response = await fetch(FORM_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ subject: "Consulta desde el sitio", message }),
+    body: JSON.stringify({ subject: "Consulta desde el sitio", message, email: form.elements.email.value.trim() }),
   });
   if (!response.ok) throw new Error(`Error ${response.status}`);
+  form.reset();
   return "Consulta enviada. La respuesta llega en el día.";
 }
 
@@ -146,10 +151,14 @@ function initContactForm() {
       return;
     }
 
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
     try {
       status.textContent = await sendContactMessage(form);
     } catch {
       status.textContent = "No se pudo enviar. Probar por WhatsApp al 261 718-0242.";
+    } finally {
+      button.disabled = false;
     }
     status.hidden = false;
   });

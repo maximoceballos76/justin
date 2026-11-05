@@ -47,6 +47,44 @@ function initMobileMenu() {
   });
 }
 
+/* En celular los dos teléfonos no entran: un botón abre un menú para elegir con quién hablar. */
+function initContactsMenu() {
+  const box = document.querySelector(".header-contacts");
+  if (!box) return;
+  const menu = document.createElement("div");
+  menu.className = "contacts-menu";
+  menu.id = "contacts-menu";
+  menu.innerHTML = '<p class="contacts-menu-title">¿Con quién quieres hablar?</p>';
+  menu.append(...box.querySelectorAll(".btn-whatsapp"));
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "contacts-toggle";
+  toggle.setAttribute("aria-controls", menu.id);
+  toggle.innerHTML = menu.querySelector("svg").outerHTML;
+  box.append(toggle, menu);
+
+  function setOpen(open) {
+    box.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar teléfonos" : "Ver teléfonos de WhatsApp");
+  }
+  setOpen(false);
+  toggle.addEventListener("click", () => {
+    // Si el menú principal está abierto, se cierra para no encimarlos
+    if (document.querySelector(".main-nav.is-open")) document.querySelector(".nav-toggle").click();
+    setOpen(!box.classList.contains("is-open"));
+  });
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setOpen(false);
+  });
+  document.addEventListener("click", (event) => {
+    if (!box.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+}
+
 /* Filtros por categoría en la página de Obras. */
 function initProjectFilters() {
   const filters = document.querySelectorAll(".filter");
@@ -166,5 +204,6 @@ function initContactForm() {
 
 initWhatsappLinks();
 initMobileMenu();
+initContactsMenu();
 initProjectFilters();
 initContactForm();
